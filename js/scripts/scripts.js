@@ -182,36 +182,20 @@ var highlightLayer;
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Scientific Name</strong><br />' + (feature.properties['latin_name'] !== null ? autolinker.link(feature.properties['latin_name'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['lat'] !== null ? autolinker.link(feature.properties['lat'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['long'] !== null ? autolinker.link(feature.properties['long'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2"><strong>latin_name</strong><br />' + (feature.properties['latin_name'] !== null ? autolinker.link(feature.properties['latin_name'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">native</th>\
-                        <td>' + (feature.properties['native'] !== null ? autolinker.link(feature.properties['native'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">barangay</th>\
-                        <td>' + (feature.properties['barangay'] !== null ? autolinker.link(feature.properties['barangay'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">note</th>\
-                        <td>' + (feature.properties['note'] !== null ? autolinker.link(feature.properties['note'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">local_name</th>\
-                        <td>' + (feature.properties['local_name'] !== null ? autolinker.link(feature.properties['local_name'].toLocaleString()) : '') + '</td>\
-                    </tr>\
+                    <td colspan="2"><strong>Native Status</strong><br />' + (feature.properties['native'] !== null ? autolinker.link(feature.properties['native'].toLocaleString()) : '') + '</td>\
+                </tr>\
+                <tr>\
+                <td colspan="2"><strong>Barangay</strong><br />' + (feature.properties['barangay'] !== null ? autolinker.link(feature.properties['barangay'].toLocaleString()) : '') + '</td>\
+            </tr>\
+            <tr>\
+            <td colspan="2"><strong>Note</strong><br />' + (feature.properties['note'] !== null ? autolinker.link(feature.properties['note'].toLocaleString()) : '') + '</td>\
+        </tr>\
+        <tr>\
+        <td colspan="2"><strong>Local Name</strong><br />' + (feature.properties['local_name'] !== null ? autolinker.link(feature.properties['local_name'].toLocaleString()) : '') + '</td>\
+    </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
@@ -250,6 +234,12 @@ var highlightLayer;
                 };
                 return L.shapeMarker(latlng, style_heritage_trees_4_0(feature));
             },
+        }).on('click',function(e){
+        	//alert(e.layer.feature.properties.latin_name);
+        	document.getElementById("latinName").innerHTML = e.layer.feature.properties.latin_name;
+        	var img = document.createElement('img');
+            img.src = 'images/trees/'+e.layer.feature.properties.id+'.jpg';
+            document.getElementById('treeSrc').src = img.src;
         });
         var cluster_heritage_trees_4 = new L.MarkerClusterGroup({showCoverageOnHover: false,
             spiderfyDistanceMultiplier: 2});
@@ -281,3 +271,18 @@ var highlightLayer;
         map.on("layerremove", function(){
             resetLabels([layer_Tabaco_city_barangays_2]);
         });
+   
+//latlongdet:
+        
+  //      <tr>\
+ //       <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+//    </tr>\
+//<tr>\
+//       <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+//        </tr>\
+//        <tr>\
+//            <td colspan="2">' + (feature.properties['lat'] !== null ? autolinker.link(feature.properties['lat'].toLocaleString()) : '') + '</td>\
+//        </tr>\
+//        <tr>\
+//            <td colspan="2">' + (feature.properties['long'] !== null ? autolinker.link(feature.properties['long'].toLocaleString()) : '') + '</td>\
+//        </tr>\
