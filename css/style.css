@@ -1,8 +1,21 @@
 #map {
-	width: 1000px;
+	width: 100%;
 	height: 651px;
 }
 
 body {
 	padding-top: 55.6px;
+}
+
+#treeImg{
+	width: 240px;
+}
+
+#treeSrc{
+	max-width: 100%;
+ 	object-fit: contain;
+}
+
+.hide{
+	display: none;
 }

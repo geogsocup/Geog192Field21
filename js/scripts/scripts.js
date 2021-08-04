@@ -1,8 +1,27 @@
+$(document).ready(function(){
+var activeStatus = false;
+var targetLayerActive;
+var targetFeatureActive;
 var highlightLayer;
         function highlightFeature(e) {
             highlightLayer = e.target;
 
             if (e.target.feature.geometry.type === 'LineString') {
+              highlightLayer.setStyle({
+                color: '#ffff00',
+              });
+            } else {
+              highlightLayer.setStyle({
+                fillColor: '#ffff00',
+                fillOpacity: 1
+              });
+            }
+        }
+        
+        function highlightFeatureClick(e) {
+            highlightLayer = e.layer.feature;
+
+            if (highlightLayer.geometry.type === 'LineString') {
               highlightLayer.setStyle({
                 color: '#ffff00',
               });
@@ -174,11 +193,52 @@ var highlightLayer;
         function pop_heritage_trees_4(feature, layer) {
             layer.on({
                 mouseout: function(e) {
-                    for (i in e.target._eventParents) {
-                        e.target._eventParents[i].resetStyle(e.target);
-                    }
+                	if (activeStatus){
+                		if(targetFeatureActive != e.target.feature.properties.fid){
+                    		for (i in e.target._eventParents) {
+                    			e.target._eventParents[i].resetStyle(e.target);
+                    		}
+                		}
+                	} else {
+                		for (i in e.target._eventParents) {
+                			e.target._eventParents[i].resetStyle(e.target);
+                		}
+                	}
                 },
                 mouseover: highlightFeature,
+                click: function(e) {
+                	if (!activeStatus) {
+                       	targetLayerActive = e;
+                    	targetFeatureActive = e.target.feature.properties.fid;
+                    	activeStatus = true;
+                    	$("#treeContentDiv").removeClass("hide");
+                    	document.getElementById("latinName").innerHTML = e.target.feature.properties.latin_name;
+                    	var img = document.createElement('img');
+                        img.src = 'images/trees/'+e.target.feature.properties.id+'.jpg';
+                        document.getElementById('treeSrc').src = img.src;
+                        console.log(this);
+                        highlightFeature(e);
+                	} else {
+                		if(targetFeatureActive != e.target.feature.properties.fid){
+                			var j = 1;
+                            for (i in targetLayerActive.target._eventParents) {           	
+                            	if(Object.keys(targetLayerActive.target._eventParents).length > j){
+                            		targetLayerActive.target._eventParents[i].resetStyle(targetLayerActive.target);
+                            	}
+                        		j++;
+                    		}
+                        	targetFeatureActive = e.target.feature.properties.fid;
+                        	targetLayerActive = e;
+                        	activeStatus = true;
+                        	document.getElementById("latinName").innerHTML = e.target.feature.properties.latin_name;
+                        	var img = document.createElement('img');
+                            img.src = 'images/trees/'+e.target.feature.properties.id+'.jpg';
+                            document.getElementById('treeSrc').src = img.src;
+                            console.log(this);
+                            highlightFeature(e);
+                		}
+                	}
+                }
             });
             var popupContent = '<table>\
                     <tr>\
@@ -198,6 +258,18 @@ var highlightLayer;
     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
+            $("#closeTreeInfo").click(function(){
+            	activeStatus = false;
+            	//targetLayerActive.target.resetStyle(targetLayerActive.target);
+            	$("#treeContentDiv").addClass("hide");
+            	document.getElementById("latinName").innerHTML = '';
+            	var img = document.createElement('img');
+                img.src = '';
+                document.getElementById('treeSrc').src = img.src;
+            	for (i in targetLayerActive.target._eventParents) {
+            		targetLayerActive.target._eventParents[i].resetStyle(targetLayerActive.target);
+        		}
+              });
         }
 
         function style_heritage_trees_4_0() {
@@ -234,13 +306,8 @@ var highlightLayer;
                 };
                 return L.shapeMarker(latlng, style_heritage_trees_4_0(feature));
             },
-        }).on('click',function(e){
-        	//alert(e.layer.feature.properties.latin_name);
-        	document.getElementById("latinName").innerHTML = e.layer.feature.properties.latin_name;
-        	var img = document.createElement('img');
-            img.src = 'images/trees/'+e.layer.feature.properties.id+'.jpg';
-            document.getElementById('treeSrc').src = img.src;
         });
+
         var cluster_heritage_trees_4 = new L.MarkerClusterGroup({showCoverageOnHover: false,
             spiderfyDistanceMultiplier: 2});
         cluster_heritage_trees_4.addLayer(layer_heritage_trees_4);
@@ -271,6 +338,7 @@ var highlightLayer;
         map.on("layerremove", function(){
             resetLabels([layer_Tabaco_city_barangays_2]);
         });
+});
    
 //latlongdet:
         
