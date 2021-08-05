@@ -1,4 +1,3 @@
-$(document).ready(function(){
 var activeStatus = false;
 var targetLayerActive;
 var targetFeatureActive;
@@ -34,7 +33,7 @@ var highlightLayer;
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:12
-        }).fitBounds([[13.257991713400264,123.57732476321142],[13.39989214795175,123.85198115571727]]);
+        }).fitBounds([[13.257991713400264,123.57732476321142],[13.4,123.85198115571727]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -190,6 +189,11 @@ var highlightLayer;
         });
         bounds_group.addLayer(layer_Tabaco_city_outline_3);
         map.addLayer(layer_Tabaco_city_outline_3);
+        $(document).ready(function(){
+       	 window.addEventListener('load', function () {
+          	  var el = document.querySelectorAll('img.lightense');
+          	  Lightense(el);
+          }, false);
         function pop_heritage_trees_4(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -216,6 +220,8 @@ var highlightLayer;
                     	var img = document.createElement('img');
                         img.src = 'images/trees/'+e.target.feature.properties.id+'.jpg';
                         document.getElementById('treeSrc').src = img.src;
+                        var el = document.querySelectorAll('img.lightense');
+                    	Lightense(el);
                         console.log(this);
                         highlightFeature(e);
                 	} else {
@@ -234,6 +240,8 @@ var highlightLayer;
                         	var img = document.createElement('img');
                             img.src = 'images/trees/'+e.target.feature.properties.id+'.jpg';
                             document.getElementById('treeSrc').src = img.src;
+                            var el = document.querySelectorAll('img.lightense');
+                        	Lightense(el);
                             console.log(this);
                             highlightFeature(e);
                 		}
@@ -338,6 +346,7 @@ var highlightLayer;
         map.on("layerremove", function(){
             resetLabels([layer_Tabaco_city_barangays_2]);
         });
+        
 });
    
 //latlongdet:
