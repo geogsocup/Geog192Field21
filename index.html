@@ -22,24 +22,52 @@
  			</div>
 		</nav>
 		<div class="row full-width full-height">
-			<div id="leftPane" class="col-lg-8 full-height">
+			<div id="leftPane" class="col-lg-7 full-height">
 				<div id="map" class="full-height full-width">
 				</div>
         	</div>
-        	<div id="rightPane" class="col-lg-4">
+        	<div id="rightPane" class="col-lg-5">
         		<div id="treeContentDiv" class="hide">
         			<div class="row">
-        				<div id="treeLatinHeader">
-        					<span>
-        						<span id="latinName">		
+        				<div id="treeDescContainer">
+        					<div id="treeLatinHeader">
+        						<span>
+        							<button id="closeTreeInfo" type="button" class="btn-close" aria-label="Close"></button>
+        							<span id="latinName">		
+        							</span>
         						</span>
-        						<a id="closeTreeInfo" class="leaflet-popup-close-button" href="#close">×</a>
-        					</span>
+        					</div>
         				</div>
         			</div>
         			<div class="row">
         			    <div id="treeImg">
         					<img id="treeSrc" class="lightense">
+        				</div>
+        				<div id="treeDescRightDiv">
+        					<div class="row fw-bold">
+        						<span>Local Name</span>
+        					</div>
+        					<div class="row">
+        						<span id="localNameDesc"></span>
+        					</div>
+        					<div class="row fw-bold">
+        						<span>Native Status</span>
+        					</div>
+        					<div class="row">
+        						<span id="nativeStatusNameDesc"></span>
+        					</div>
+        					<div class="row fw-bold">
+        						<span>Barangay</span>
+        					</div>
+        					<div class="row">
+        						<span id="barangayNameDesc"></span>
+        					</div>
+        					<div class="row fw-bold">
+        						<span>Note</span>
+        					</div>
+        					<div class="row">
+        						<span id="noteNameDesc"></span>
+        					</div>
         				</div>
         			</div>
         		</div>

@@ -223,6 +223,10 @@ var highlightLayer;
                         var el = document.querySelectorAll('img.lightense');
                     	Lightense(el);
                         console.log(this);
+                        document.getElementById('localNameDesc').innerHTML = e.target.feature.properties.local_name;
+                        document.getElementById('nativeStatusNameDesc').innerHTML = e.target.feature.properties.native;
+                        document.getElementById('barangayNameDesc').innerHTML = e.target.feature.properties.barangay;
+                        document.getElementById('noteNameDesc').innerHTML = e.target.feature.properties.note;
                         highlightFeature(e);
                 	} else {
                 		if(targetFeatureActive != e.target.feature.properties.fid){
@@ -243,6 +247,10 @@ var highlightLayer;
                             var el = document.querySelectorAll('img.lightense');
                         	Lightense(el);
                             console.log(this);
+                            document.getElementById('localNameDesc').innerHTML = e.target.feature.properties.local_name;
+                            document.getElementById('nativeStatusNameDesc').innerHTML = e.target.feature.properties.native;
+                            document.getElementById('barangayNameDesc').innerHTML = e.target.feature.properties.barangay;
+                            document.getElementById('noteNameDesc').innerHTML = e.target.feature.properties.note;
                             highlightFeature(e);
                 		}
                 	}

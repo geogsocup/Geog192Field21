@@ -12,9 +12,9 @@ body{
     border-left-style: solid;
     border-left-width: 2px;
     z-index: 99;
-    box-shadow: -16px 2px 46px -22px rgb(0 0 0 / 73%);
-    -webkit-box-shadow: -16px 2px 46px -22px rgb(0 0 0 / 73%);
-    -moz-box-shadow: -16px 2px 46px -22px rgba(0,0,0,0.73);
+    box-shadow: -15px 0px 25px -14px rgba(0,0,0,0.75);
+	-webkit-box-shadow: -15px 0px 25px -14px rgba(0,0,0,0.75);
+	-moz-box-shadow: -15px 0px 25px -14px rgba(0,0,0,0.75);
 }
 
 #leftPane{
@@ -23,9 +23,15 @@ body{
 }
 
 #treeImg{
-	width: 240px;
-	margin: auto;
+	width: 45%;
+	margin-left: 12px;
+	padding: 12px;
 	z-index: 102;
+	border-style: solid;
+    border-width: 1px;
+    border-color: #84651a;
+    border-radius: 12px;
+    background-color: #e3dbd2;
 }
 
 #map{
@@ -40,10 +46,10 @@ body{
 
 #treeLatinHeader{
 	padding: 12px;
-    border-bottom: solid;
-    border-color: #aa9d9d;
-    border-bottom-width: 2px;
-    background-color: bisque;
+    background-color: #A1C39C;
+    border-radius: 14px;
+    font-weight: bold;
+    color: #FFFF;
 }
 
 #treeContentDiv{
@@ -51,8 +57,25 @@ body{
 }
 
 #latinName{
-	font-size: 20px;
+	font-size: 24px;
     font-style: italic;
+}
+
+#treeDescContainer{
+	padding: 12px;
+}
+
+#closeTreeInfo{
+	cursor: pointer;
+	margin-right: 4px;
+}
+
+#treeDescRightDiv{
+	width: 50%;
+    margin-left: 12px;
+    border-left-color: black;
+    border-left-style: solid;
+    border-width: 1px;
 }
 
 .hide{
@@ -69,4 +92,8 @@ body{
 
 .lightense-backdrop{
 	z-index: 1 !important;
+}
+
+.fw-bold{
+	font-weight: bold;
 }
