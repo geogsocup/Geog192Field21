@@ -38,6 +38,23 @@ body{
  	object-fit: contain;
 }
 
+#treeLatinHeader{
+	padding: 12px;
+    border-bottom: solid;
+    border-color: #aa9d9d;
+    border-bottom-width: 2px;
+    background-color: bisque;
+}
+
+#treeContentDiv{
+	margin-right: -12px;
+}
+
+#latinName{
+	font-size: 20px;
+    font-style: italic;
+}
+
 .hide{
 	display: none;
 }
