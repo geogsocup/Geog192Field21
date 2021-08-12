@@ -228,6 +228,7 @@ var highlightLayer;
                         document.getElementById('barangayNameDesc').innerHTML = e.target.feature.properties.barangay;
                         document.getElementById('noteNameDesc').innerHTML = e.target.feature.properties.note;
                         highlightFeature(e);
+                        document.getElementById('initContent').classList.add("hide");
                 	} else {
                 		if(targetFeatureActive != e.target.feature.properties.fid){
                 			var j = 1;
@@ -252,6 +253,7 @@ var highlightLayer;
                             document.getElementById('barangayNameDesc').innerHTML = e.target.feature.properties.barangay;
                             document.getElementById('noteNameDesc').innerHTML = e.target.feature.properties.note;
                             highlightFeature(e);
+                            document.getElementById('initContent').classList.add("hide");
                 		}
                 	}
                 }
@@ -282,9 +284,14 @@ var highlightLayer;
             	var img = document.createElement('img');
                 img.src = '';
                 document.getElementById('treeSrc').src = img.src;
-            	for (i in targetLayerActive.target._eventParents) {
-            		targetLayerActive.target._eventParents[i].resetStyle(targetLayerActive.target);
-        		}
+                try {
+                	for (i in targetLayerActive.target._eventParents) {
+                		targetLayerActive.target._eventParents[i].resetStyle(targetLayerActive.target);
+            		}
+                }
+                catch(err) {
+                }
+                document.getElementById('initContent').classList.remove("hide");
               });
         }
 

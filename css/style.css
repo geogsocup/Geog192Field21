@@ -1,10 +1,45 @@
+@font-face {
+  font-family: taylorSwiftFolklore;
+  src: url(../webfonts/IMFePIit28P.ttf);
+}
+
+@font-face {
+  font-family: taylorSwiftFolkloreNotItalic;
+  src: url(../webfonts/IMFePIrm28P.ttf);
+}
+
+@font-face {
+  font-family: glacialIndifferenceBold;
+  src: url(../webfonts/GlacialIndifference-Bold.otf);
+}
+
+@font-face {
+  font-family: glacialIndifference;
+  src: url(../webfonts/GlacialIndifference-Regular.otf);
+}
+
+
 html{
 	height: 100%;
 }
 
 body{
 	height: 100%;
-	padding-top: 55.6px;
+}
+
+h4{
+	font-family: 'taylorSwiftFolklore';
+    font-size: 45px !important;
+    font-weight: bold;
+    margin-top: 12px !important;
+    margin-bottom: 12px !important;
+}
+
+h5{
+	font-family: 'taylorSwiftFolkloreNotItalic';
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 24px;
 }
 
 #rightPane {
@@ -12,6 +47,7 @@ body{
     border-left-style: solid;
     border-left-width: 2px;
     z-index: 99;
+    background-color: #d1b99a;
     box-shadow: -15px 0px 25px -14px rgba(0,0,0,0.75);
 	-webkit-box-shadow: -15px 0px 25px -14px rgba(0,0,0,0.75);
 	-moz-box-shadow: -15px 0px 25px -14px rgba(0,0,0,0.75);
@@ -34,6 +70,12 @@ body{
     background-color: #e3dbd2;
 }
 
+#initContent{
+	padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 12px;
+}
+
 #map{
 	height: 100%;
     width: 100%;
@@ -54,6 +96,7 @@ body{
 
 #treeContentDiv{
 	margin-right: -12px;
+	padding-right: 12px;
 }
 
 #latinName{
@@ -78,12 +121,32 @@ body{
     border-width: 1px;
 }
 
+.subheader{
+	font-family: 'taylorSwiftFolkloreNotItalic';
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.text-justify{
+	text-align: justify;
+}
+
+.m-tb-12{
+	margin-top: 12px !important;
+	margin-bottom: 12px !important;
+}
+
 .hide{
-	display: none;
+	display: none !important;
 }
 
 .full-width{
 	width: 100%;
+}
+
+.full-width-minus-12{
+	width: calc(100% + 12px);
 }
 
 .full-height{
@@ -96,4 +159,21 @@ body{
 
 .fw-bold{
 	font-weight: bold;
+}
+
+.body-text{
+	font-family: glacialIndifference;
+    font-size: 18px;
+}
+
+@media only screen and (max-width: 992px) {
+	#leftPane{
+		height: 100%;
+	}
+}
+
+@media only screen and (min-width: 992px) {
+	#leftPane{
+		height: auto;
+	}
 }
