@@ -47,6 +47,11 @@ var Lightense = function Lightense() {
   var config = {};
 
   function invokeCustomHook(methodName) {
+	if (methodName === "beforeShow"){
+		$("#rightPane").css("overflow-y", "clip");
+	} else if (methodName === "afterHide") {
+		$("#rightPane ").css("overflow-y", "auto");
+	}
     var method = config[methodName];
 
     if (!method) {

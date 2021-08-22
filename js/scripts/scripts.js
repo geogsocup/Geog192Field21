@@ -227,6 +227,47 @@ var highlightLayer;
                         document.getElementById('nativeStatusNameDesc').innerHTML = e.target.feature.properties.native;
                         document.getElementById('barangayNameDesc').innerHTML = e.target.feature.properties.barangay;
                         document.getElementById('noteNameDesc').innerHTML = e.target.feature.properties.note;
+                        if(!e.target.feature.properties.note){
+                        	$('#noteNameDescHead').hide();
+                        } else {
+                        	$('#noteNameDescHead').show();
+                        }
+                        document.getElementById('ecoNameDesc').innerHTML = e.target.feature.properties.ecological;
+                        if(!e.target.feature.properties.ecological){
+                        	$('#ecoNameDescHead').hide();
+                        } else {
+                        	$('#ecoNameDescHead').show();
+                        }
+                        document.getElementById('econNameDesc').innerHTML = e.target.feature.properties.economic;
+                        if(!e.target.feature.properties.economic){
+                        	$('#econNameDescHead').hide();
+                        } else {
+                        	$('#econNameDescHead').show();
+                        }
+                        document.getElementById('ethnoNameDesc').innerHTML = e.target.feature.properties.ethnobotanical;
+                        if(!e.target.feature.properties.ethnobotanical){
+                        	$('#ethnoNameDescHead').hide();
+                        } else {
+                        	$('#ethnoNameDescHead').show();
+                        }
+                        document.getElementById('funcNameDesc').innerHTML = e.target.feature.properties.functional;
+                        if(!e.target.feature.properties.functional){
+                        	$('#funcNameDescHead').hide();
+                        } else {
+                        	$('#funcNameDescHead').show();
+                        }
+                        document.getElementById('habNameDesc').innerHTML = e.target.feature.properties.habitat;
+                        if(!e.target.feature.properties.habitat){
+                        	$('#habNameDescHead').hide();
+                        } else {
+                        	$('#habNameDescHead').show();
+                        }
+                        document.getElementById('medNameDesc').innerHTML = e.target.feature.properties.medicinal;
+                        if(!e.target.feature.properties.medicinal){
+                        	$('#medNameDescHead').hide();
+                        } else {
+                        	$('#medNameDescHead').show();
+                        }
                         highlightFeature(e);
                         document.getElementById('initContent').classList.add("hide");
                 	} else {
@@ -247,11 +288,52 @@ var highlightLayer;
                             document.getElementById('treeSrc').src = img.src;
                             var el = document.querySelectorAll('img.lightense');
                         	Lightense(el);
-                            console.log(this);
+                            //console.log(this);
                             document.getElementById('localNameDesc').innerHTML = e.target.feature.properties.local_name;
                             document.getElementById('nativeStatusNameDesc').innerHTML = e.target.feature.properties.native;
                             document.getElementById('barangayNameDesc').innerHTML = e.target.feature.properties.barangay;
                             document.getElementById('noteNameDesc').innerHTML = e.target.feature.properties.note;
+                            if(!e.target.feature.properties.note){
+                            	$('#noteNameDescHead').hide();
+                            } else {
+                            	$('#noteNameDescHead').show();
+                            }
+                            document.getElementById('ecoNameDesc').innerHTML = e.target.feature.properties.ecological;
+                            if(!e.target.feature.properties.ecological){
+                            	$('#ecoNameDescHead').hide();
+                            } else {
+                            	$('#ecoNameDescHead').show();
+                            }
+                            document.getElementById('econNameDesc').innerHTML = e.target.feature.properties.economic;
+                            if(!e.target.feature.properties.economic){
+                            	$('#econNameDescHead').hide();
+                            } else {
+                            	$('#econNameDescHead').show();
+                            }
+                            document.getElementById('ethnoNameDesc').innerHTML = e.target.feature.properties.ethnobotanical;
+                            if(!e.target.feature.properties.ethnobotanical){
+                            	$('#ethnoNameDescHead').hide();
+                            } else {
+                            	$('#ethnoNameDescHead').show();
+                            }
+                            document.getElementById('funcNameDesc').innerHTML = e.target.feature.properties.functional;
+                            if(!e.target.feature.properties.functional){
+                            	$('#funcNameDescHead').hide();
+                            } else {
+                            	$('#funcNameDescHead').show();
+                            }
+                            document.getElementById('habNameDesc').innerHTML = e.target.feature.properties.habitat;
+                            if(!e.target.feature.properties.habitat){
+                            	$('#habNameDescHead').hide();
+                            } else {
+                            	$('#habNameDescHead').show();
+                            }
+                            document.getElementById('medNameDesc').innerHTML = e.target.feature.properties.medicinal;
+                            if(!e.target.feature.properties.medicinal){
+                            	$('#medNameDescHead').hide();
+                            } else {
+                            	$('#medNameDescHead').show();
+                            }
                             highlightFeature(e);
                             document.getElementById('initContent').classList.add("hide");
                 		}
@@ -332,7 +414,7 @@ var highlightLayer;
         });
 
         var cluster_heritage_trees_4 = new L.MarkerClusterGroup({showCoverageOnHover: false,
-            spiderfyDistanceMultiplier: 2});
+            spiderfyDistanceMultiplier: 6});
         cluster_heritage_trees_4.addLayer(layer_heritage_trees_4);
 
         bounds_group.addLayer(layer_heritage_trees_4);

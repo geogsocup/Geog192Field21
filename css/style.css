@@ -43,9 +43,11 @@ h5{
 }
 
 #rightPane {
+	height: 100%;
 	border-left: #aa9d9d;
     border-left-style: solid;
     border-left-width: 2px;
+    overflow-y: auto;
     z-index: 99;
     background-color: #d1b99a;
     box-shadow: -15px 0px 25px -14px rgba(0,0,0,0.75);
@@ -157,6 +159,10 @@ h5{
 	z-index: 1 !important;
 }
 
+.overflow-y-clip{
+	overflow-y: clip !important;
+}
+
 .fw-bold{
 	font-weight: bold;
 }
@@ -164,6 +170,26 @@ h5{
 .body-text{
 	font-family: glacialIndifference;
     font-size: 18px;
+}
+
+.desc-tree-narrative{
+	padding-left: 14px !important;
+    margin-bottom: 28px !important;
+    margin-top: 12px !important;
+}
+
+.mb-12{
+	margin-bottom: 12px;
+}
+
+.tree-section-header{
+	font-family: 'taylorSwiftFolkloreNotItalic';
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.glacial-indifference{
+	font-family: glacialIndifference;
 }
 
 @media only screen and (max-width: 992px) {
