@@ -41,32 +41,27 @@ var highlightLayer;
         function setBounds() {
             map.setMaxBounds(map.getBounds());
         }
-        map.createPane('pane_CartoLightcopy_0');
-        map.getPane('pane_CartoLightcopy_0').style.zIndex = 400;
-        var layer_CartoLightcopy_0 = L.tileLayer('https://a.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}@2x.png', {
-            pane: 'pane_CartoLightcopy_0',
-            opacity: 1.0,
-            attribution: '',
-            minZoom: 12,
-            maxZoom: 28,
-            minNativeZoom: 0,
-            maxNativeZoom: 18
-        });
-        layer_CartoLightcopy_0;
-        map.addLayer(layer_CartoLightcopy_0);
-        map.createPane('pane_CartoLight_1');
-        map.getPane('pane_CartoLight_1').style.zIndex = 401;
-        var layer_CartoLight_1 = L.tileLayer('https://a.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}@2x.png', {
-            pane: 'pane_CartoLight_1',
-            opacity: 1.0,
-            attribution: '',
-            minZoom: 12,
-            maxZoom: 28,
-            minNativeZoom: 0,
-            maxNativeZoom: 18
-        });
-        layer_CartoLight_1;
-        map.addLayer(layer_CartoLight_1);
+        // Basemap: OpenStreetMap data via OpenFreeMap vector tiles (free, no API key).
+        // The Positron style is loaded and its label (symbol) layers are removed
+        // so the basemap has no text.
+        map.createPane('pane_Basemap_0');
+        map.getPane('pane_Basemap_0').style.zIndex = 400;
+        fetch('https://tiles.openfreemap.org/styles/positron')
+            .then(function (response) { return response.json(); })
+            .then(function (style) {
+                style.layers = style.layers.filter(function (layer) {
+                    return layer.type !== 'symbol';
+                });
+                L.maplibreGL({
+                    style: style,
+                    pane: 'pane_Basemap_0',
+                    maxZoom: 27, // MapLibre zoom = Leaflet zoom - 1; Leaflet maxZoom is 28
+                    attribution: '<a href="https://openfreemap.org" target="_blank">OpenFreeMap</a> &copy; <a href="https://www.openmaptiles.org/" target="_blank">OpenMapTiles</a> Data from <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>'
+                }).addTo(map);
+            })
+            .catch(function (err) {
+                console.error('Basemap failed to load:', err);
+            });
         function pop_Tabaco_city_barangays_2(feature, layer) {
             layer.on({
                 mouseout: function(e) {
